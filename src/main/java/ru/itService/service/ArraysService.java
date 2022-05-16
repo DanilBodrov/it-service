@@ -35,7 +35,6 @@ public class ArraysService {
         repository.saveAll(arrayStrings);
     }
 
-    /*TODO сортировка не работает*/
     public ArrayStrings calculate(ArrayStrings arrayStrings) {
         String[] strings = arrayStrings.getString().split(" ");
         String[] subStrings = arrayStrings.getSubString().split(" ");
@@ -81,6 +80,7 @@ public class ArraysService {
         }
     }
 
+    /*TODO обработка при отправки пустоты*/
     public List<ArrayStrings> importFromTxt(MultipartFile file) {
         File condFile = new File(file.getOriginalFilename());
         List<ArrayStrings> list = new ArrayList<>();
@@ -114,7 +114,9 @@ public class ArraysService {
 
     /*TODO удалить*/
     public static void main(String[] args) {
-        String[] arr = new String[] {"as", "12", "f", "a", "1",};
+        int[][] myArr = {{1,2,3},{4,5,6},{7,8,9}};
+        System.out.println(myArr.length);
+        /*String[] arr = new String[] {"as", "12", "f", "a", "1",};
         List<String> list = List.of("as", "12", "f", "a", "1");
 
         //SortedSet<String> set = Set.of(arr);
@@ -130,7 +132,7 @@ public class ArraysService {
         System.out.println(re);
         //"123 s fd 12 1 a";
         String subStr = "1 1 1 s";
-        String type = "substring";
+        String type = "substring";*/
 
 
     }

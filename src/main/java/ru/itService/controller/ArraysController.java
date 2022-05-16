@@ -7,7 +7,6 @@ import org.springframework.web.multipart.MultipartFile;
 import ru.itService.model.ArrayStrings;
 import ru.itService.service.ArraysService;
 
-import java.io.File;
 import java.util.List;
 
 @Controller
@@ -19,6 +18,7 @@ public class ArraysController {
         this.arraysService = arraysService;
     }
 
+    /*TODO удалить этот маппинг*/
     @GetMapping("/calculation")
     public String calculation() {
         return "calculation";
@@ -45,6 +45,7 @@ public class ArraysController {
     @PostMapping("/exportToTxt")
     public String exportInTxt(@ModelAttribute ArrayStrings arrayStrings) {
         arraysService.exportInTxt(arrayStrings);
+        /*TODO тут*/
         return "redirect:/calculation";
     }
 
@@ -54,5 +55,12 @@ public class ArraysController {
         arraysService.createAll(list);
         return "redirect:/calculation";
     }
+
+    /*TODO Магический квадрат*/
+
+    /*@PostMapping("/addMagicSquareToDb")
+    public String addMagicSquareToDb() {
+        return null;
+    }*/
 
 }

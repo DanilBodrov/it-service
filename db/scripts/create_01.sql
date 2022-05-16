@@ -7,3 +7,17 @@ create table arrays
     type_task  text,
     count      int
 );
+
+create table magic_square
+(
+    id        serial primary key,
+    zero_zero int,
+    zero_one  int,
+    zero_two  int,
+    one_zero  int,
+    one_one   int,
+    one_two   int,
+    two_zero  int,
+    two_one   int,
+    two_two   int
+);
