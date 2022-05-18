@@ -24,13 +24,16 @@
     <div class="row">
         <ul class="nav">
             <li class="nav-item">
-                <a class="nav-link" th:href="@{/calculation}">Расчёт</a>
+                <a class="nav-link" th:href="@{/arraysCalculation}">Расчёт</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" th:href="@{/allBySubstringType}">Вывод расчётов</a>
+                <a class="nav-link" th:href="@{/findArrayStrings}">Вывод расчётов</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" th:href="@{/registerPage}">Вывод Магических квадратов</a>
+                <a class="nav-link" th:href="@{/magicCalculation}">Ввод Немагического квадрата</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" th:href="@{/findMagicSquare}">Вывод Магических квадратов</a>
             </li>
         </ul>
     </div>
@@ -43,7 +46,7 @@
                     <input type="number" class="form-control" name="count" id="count">
                 </div>
                 <button type="submit" formaction="findByCount" class="btn btn-primary">Найти расчёт</button>
-                <button type="submit" formaction="allBySubstringType" class="btn btn-primary">Все расчёты</button>
+                <button type="submit" formaction="findArrayStrings" class="btn btn-primary">Все расчёты</button>
             </form>
         </div>
     </div>

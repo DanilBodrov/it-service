@@ -21,18 +21,18 @@ public class ArraysService {
         repository.save(calculate(arrayStrings));
     }
 
-    public Collection<ArrayStrings> findAll() {
+    public void createAll(List<ArrayStrings> arrayStrings) {
+        repository.saveAll(arrayStrings);
+    }
+
+    public List<ArrayStrings> findAll() {
         List<ArrayStrings> list = new ArrayList<>();
         repository.findAll().forEach(list::add);
         return list;
     }
 
-    public Collection<ArrayStrings> findByCount(int count) {
+    public List<ArrayStrings> findByCount(int count) {
         return repository.findByCount(count);
-    }
-
-    public void createAll(List<ArrayStrings> arrayStrings) {
-        repository.saveAll(arrayStrings);
     }
 
     public ArrayStrings calculate(ArrayStrings arrayStrings) {
@@ -68,8 +68,8 @@ public class ArraysService {
         return arrayStrings;
     }
 
-    public void exportInTxt(ArrayStrings arrayStrings) {
-        try(PrintWriter out = new PrintWriter(new BufferedOutputStream(new FileOutputStream("exportFromServer.txt", true)))) {
+    public void exportArrayToTxt(ArrayStrings arrayStrings) {
+        try (PrintWriter out = new PrintWriter(new BufferedOutputStream(new FileOutputStream("exportFromServer.txt", true)))) {
             out.println(System.lineSeparator());
             out.println("ЭКСПОРТ С СЕРВЕРА:");
             out.println("Подстроки: " + arrayStrings.getSubString());
@@ -81,7 +81,7 @@ public class ArraysService {
     }
 
     /*TODO обработка при отправки пустоты*/
-    public List<ArrayStrings> importFromTxt(MultipartFile file) {
+    public List<ArrayStrings> importArrayFromTxt(MultipartFile file) {
         File condFile = new File(file.getOriginalFilename());
         List<ArrayStrings> list = new ArrayList<>();
         try (BufferedReader in = new BufferedReader(new FileReader(condFile))) {
@@ -114,7 +114,7 @@ public class ArraysService {
 
     /*TODO удалить*/
     public static void main(String[] args) {
-        int[][] myArr = {{1,2,3},{4,5,6},{7,8,9}};
+        int[][] myArr = {{1, 2, 3}, {4, 5, 6}, {7, 8, 9}};
         System.out.println(myArr.length);
         /*String[] arr = new String[] {"as", "12", "f", "a", "1",};
         List<String> list = List.of("as", "12", "f", "a", "1");

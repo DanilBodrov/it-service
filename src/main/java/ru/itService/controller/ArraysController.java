@@ -12,55 +12,45 @@ import java.util.List;
 @Controller
 public class ArraysController {
 
-    private  final ArraysService arraysService;
+    private final ArraysService arraysService;
 
     public ArraysController(ArraysService arraysService) {
         this.arraysService = arraysService;
     }
 
-    /*TODO удалить этот маппинг*/
-    @GetMapping("/calculation")
+    @GetMapping("/arraysCalculation")
     public String calculation() {
-        return "calculation";
+        return "arraysCalculation";
     }
 
-    @PostMapping("/addToDb")
-    public String addToDb(@ModelAttribute ArrayStrings arrayStrings) {
+    @PostMapping("/addArrayStrings")
+    public String addArrayStrings(@ModelAttribute ArrayStrings arrayStrings) {
         arraysService.create(arrayStrings);
-        return "redirect:/calculation";
+        return "redirect:/arraysCalculation";
     }
 
-    @GetMapping("/allBySubstringType")
-    public String allArraysString(Model model) {
+    @GetMapping("/findArrayStrings")
+    public String findArrayStrings(Model model) {
         model.addAttribute("arraysString", arraysService.findAll());
-        return "allBySubstringType";
+        return "findArrayStrings";
     }
 
     @GetMapping("/findByCount")
     public String findByCount(Model model, @RequestParam("count") int count) {
         model.addAttribute("arraysString", arraysService.findByCount(count));
-        return "allBySubstringType";
+        return "findArrayStrings";
     }
 
-    @PostMapping("/exportToTxt")
-    public String exportInTxt(@ModelAttribute ArrayStrings arrayStrings) {
-        arraysService.exportInTxt(arrayStrings);
-        /*TODO тут*/
-        return "redirect:/calculation";
+    @PostMapping("/exportArrayToTxt")
+    public String exportArrayToTxt(@ModelAttribute ArrayStrings arrayStrings) {
+        arraysService.exportArrayToTxt(arrayStrings);
+        return "redirect:/arraysCalculation";
     }
 
-    @PostMapping("/importFromTxt")
-    public String importFromTxt(@RequestParam("file") MultipartFile file) {
-        List<ArrayStrings> list = arraysService.importFromTxt(file);
+    @PostMapping("/importArrayFromTxt")
+    public String importArrayFromTxt(@RequestParam("file") MultipartFile file) {
+        List<ArrayStrings> list = arraysService.importArrayFromTxt(file);
         arraysService.createAll(list);
-        return "redirect:/calculation";
+        return "redirect:/arraysCalculation";
     }
-
-    /*TODO Магический квадрат*/
-
-    /*@PostMapping("/addMagicSquareToDb")
-    public String addMagicSquareToDb() {
-        return null;
-    }*/
-
 }

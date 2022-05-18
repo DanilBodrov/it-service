@@ -17,20 +17,6 @@
             crossorigin="anonymous"></script>
 
     <title>it-Service</title>
-
-    <script>
-        function validate() {
-            let res = true;
-            if ($('#ZeroZero').val() === '' || $('#ZeroOne').val() === '' || $('#ZeroTwo').val() === ''
-                || $('#OneZero').val() === '' || $('#OneOne').val() === '' || $('#OneTwo').val() === ''
-                || $('#TwoZero').val() === '' || $('#TwoOne').val() === '' || $('#TwoTwo').val() === '') {
-                alert('Заполните все поля!');
-                res = false;
-            }
-            return res;
-        }
-    </script>
-
 </head>
 <body>
 <div class="container">
@@ -54,47 +40,27 @@
     <div class="row">
         <div class="card" style="width:80%">
             <div class="card-header">
-                Преобразование в Магический квадрат.
+                Являются ли подстроки строк ?!
+                Являются ли подстроками "подстроки" "строк" ?!
             </div>
             <div class="card-body">
-                <form th:action="@{/addMagicSquare}" method="post">
-                    <div th:if="${validate}" class="alert alert-danger" role="alert">
-                        Повторение цифр недопустимо!
+                <form th:action="@{/addArrayStrings}" method="post">
+                    <div class="form-group">
+                        <label for="subString">Подстроки</label>
+                        <input type="text" class="form-control" name="subString" id="subString">
                     </div>
                     <div class="form-group">
-                        <label>
-                            <input type="number" min="1" max="9" name="ZeroZero" id="ZeroZero">
-                            <input type="number" min="1" max="9" name="ZeroOne" id="ZeroOne">
-                            <input type="number" min="1" max="9" name="ZeroTwo" id="ZeroTwo">
-                        </label>
+                        <label for="string">Строки</label>
+                        <input type="text" class="form-control" name="string" id="string">
                     </div>
-                    <div class="form-group">
-                        <label>
-                            <input type="number" min="1" max="9" name="OneZero" id="OneZero">
-                            <input type="number" min="1" max="9" name="OneOne" id="OneOne">
-                            <input type="number" min="1" max="9" name="OneTwo" id="OneTwo">
-                        </label>
-                    </div>
-                    <div class="form-group">
-                        <label>
-                            <input type="number" min="1" max="9" name="TwoZero" id="TwoZero">
-                            <input type="number" min="1" max="9" name="TwoOne" id="TwoOne">
-                            <input type="number" min="1" max="9" name="TwoTwo" id="TwoTwo">
-                        </label>
-                    </div>
-                    <button type="submit" formaction="addMagicSquare"
-                            class="btn btn-primary" onclick="return validate()">
-                        Сохранить
-                    </button>
-                    <button type="submit" formaction="exportMagicToTxt"
-                            class="btn btn-primary" onclick="return validate()">
-                        Экспортировать(сохранить в .txt)
+                    <button type="submit" formaction="addArrayStrings" class="btn btn-primary">Сохранить</button>
+                    <button type="submit" formaction="exportArrayToTxt" class="btn btn-primary">Экспортировать(сохранить
+                        в .txt)
                     </button>
                 </form>
             </div>
-
             <div class="card-body">
-                <form th:action="@{/importMagicSquareFromTxt}" method="post" enctype="multipart/form-data">
+                <form th:action="@{/importArrayFromTxt}" method="post" enctype="multipart/form-data">
                     <div class="form-group">
                         <label for="file">Файл(.txt)</label>
                         <input type="file" class="form-control" name="file" id="file">
