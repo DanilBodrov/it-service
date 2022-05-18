@@ -115,40 +115,4 @@ public class MagicSquareService {
         }
         return list;
     }
-
-    public static void main(String[] args) {
-
-        /*File file = new File("./exportSquareFromServer.txt");
-        var list = importFromTxt(file);
-        for (var item : list) {
-            System.out.println("========");
-            System.out.print(item.getZeroZero());
-            System.out.print(item.getZeroOne());
-            System.out.print(item.getZeroTwo());
-            System.out.println();
-            System.out.print(item.getOneZero());
-            System.out.print(item.getOneOne());
-            System.out.print(item.getOneTwo());
-            System.out.println();
-            System.out.print(item.getTwoZero());
-            System.out.print(item.getTwoOne());
-            System.out.print(item.getTwoTwo());
-            System.out.println();
-        }*/
-    }
-
-    /*public void magicCalculate(MagicSquare magicSquare) {
-        System.out.println("========");
-        System.out.print(magicSquare.getZeroZero());
-        System.out.print(magicSquare.getZeroOne());
-        System.out.print(magicSquare.getZeroTwo());
-        System.out.println();
-        System.out.print(magicSquare.getOneZero());
-        System.out.print(magicSquare.getOneOne());
-        System.out.print(magicSquare.getOneTwo());
-        System.out.println();
-        System.out.print(magicSquare.getTwoZero());
-        System.out.print(magicSquare.getTwoOne());
-        System.out.print(magicSquare.getTwoTwo());
-    }*/
 }
