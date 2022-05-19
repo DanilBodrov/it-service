@@ -38,20 +38,7 @@ public class ArraysService {
     public ArrayStrings calculate(ArrayStrings arrayStrings) {
         String[] strings = arrayStrings.getString().split(" ");
         String[] subStrings = arrayStrings.getSubString().split(" ");
-        /*String result = "";*/
         int count = 0;
-
-        /*for (String numberS1 : subStrings) {
-            for (String numberS2 : strings) {
-                if (numberS2.contains(numberS1)) {
-                    if (!result.contains(numberS1)) {
-                        result = String.join(" ", result, numberS1);
-                        count++;
-                        break;
-                    }
-                }
-            }
-        }*/
         SortedSet<String> set = new TreeSet<>();
         for (String numberS1 : subStrings) {
             for (String numberS2 : strings) {
@@ -80,7 +67,6 @@ public class ArraysService {
         }
     }
 
-    /*TODO обработка при отправки пустоты*/
     public List<ArrayStrings> importArrayFromTxt(MultipartFile file) {
         File condFile = new File(file.getOriginalFilename());
         List<ArrayStrings> list = new ArrayList<>();
@@ -110,30 +96,5 @@ public class ArraysService {
             e.printStackTrace();
         }
         return list;
-    }
-
-    /*TODO удалить*/
-    public static void main(String[] args) {
-        int[][] myArr = {{1, 2, 3}, {4, 5, 6}, {7, 8, 9}};
-        System.out.println(myArr.length);
-        /*String[] arr = new String[] {"as", "12", "f", "a", "1",};
-        List<String> list = List.of("as", "12", "f", "a", "1");
-
-        //SortedSet<String> set = Set.of(arr);
-
-        SortedSet<String> set = new TreeSet<>(Set.of(arr));
-        String re = String.join(" ", set);
-        //re = re.replaceAll("\\,|\\[|\\]|\\s", " ");
-
-        for (var item : set) {
-            System.out.println(item);
-        }
-        System.out.println("---");
-        System.out.println(re);
-        //"123 s fd 12 1 a";
-        String subStr = "1 1 1 s";
-        String type = "substring";*/
-
-
     }
 }

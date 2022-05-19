@@ -23,7 +23,7 @@
 <style type="text/css">
     table {
         border-collapse: collapse;
-        width: 250px;
+        width: 464px;
         height: 250px;
     }
 
@@ -35,7 +35,6 @@
     table.brd th,
     table.brd td {
         border: 1px solid #000;
-
     }
 
     table.brd tr {
@@ -62,32 +61,50 @@
         </ul>
     </div>
 
-    <div class="row">
+    <div class="row" style="width: 580px">
         <div class="card" style="width:80%;">
             <div class="card-header">
-                Магические квадраты.
+                Не магический квадрат(до) # Магический квадрат(после)
             </div>
         </div>
-        <table class="brd" th:each="square: ${magicSquares}">
+        <table class="brd" th:each="square: ${magicSquares}" border="5">
+            <caption></caption>
             <thead>
             <tr>
-                <th scope="row">первый</th>
-                <th scope="col">второй</th>
-                <th scope="col">третий</th>
+                <th scope="col"></th>
+                <th scope="col"></th>
+                <th scope="col"></th>
+                <th width="20px" scope="col"></th>
+                <th scope="col"></th>
+                <th scope="col"></th>
+                <th scope="col"></th>
             </tr>
             </thead>
             <tbody>
             <tr>
+                <td th:text="${square.getMagicSquareId().getZeroZero}"></td>
+                <td th:text="${square.getMagicSquareId().zeroOne}"></td>
+                <td th:text="${square.getMagicSquareId().zeroTwo}"></td>
+                <td></td>
                 <td th:text="${square.zeroZero}"></td>
                 <td th:text="${square.zeroOne}"></td>
                 <td th:text="${square.zeroTwo}"></td>
             </tr>
             <tr>
+                <td th:text="${square.getMagicSquareId().oneZero}"></td>
+                <td th:text="${square.getMagicSquareId().oneOne}"></td>
+                <td th:text="${square.getMagicSquareId().oneTwo}"></td>
+                <td></td>
                 <td th:text="${square.oneZero}"></td>
                 <td th:text="${square.oneOne}"></td>
                 <td th:text="${square.oneTwo}"></td>
+
             </tr>
             <tr>
+                <td th:text="${square.getMagicSquareId().twoZero}"></td>
+                <td th:text="${square.getMagicSquareId().twoOne}"></td>
+                <td th:text="${square.getMagicSquareId().twoTwo}"></td>
+                <td></td>
                 <td th:text="${square.twoZero}"></td>
                 <td th:text="${square.twoOne}"></td>
                 <td th:text="${square.twoTwo}"></td>

@@ -1,15 +1,14 @@
 package ru.itService.service;
 
+import ru.itService.model.MagicSquare;
+import ru.itService.model.MagicSquareResult;
+
 import java.util.*;
 
 public class Calculation {
-    public static void main(String[] args) {
-        int[][] myArr = {{4, 3, 1}, {2, 5, 6}, {7, 8, 9}};
-        see(calculationMagicSquare(myArr));
-    }
 
-    public static int[][] calculationMagicSquare(int[][] myArray) {
-        see(myArray); // вывод изначального
+    public static MagicSquareResult calculationMagicSquare(MagicSquare magicSquare) {
+        int[][] myArray = conversion(magicSquare);
         int n = myArray.length;
         int numberNow = 1;
         List<Integer> listStand = new ArrayList<>();
@@ -59,17 +58,41 @@ public class Calculation {
                 }
             }
         }
-        return myArray;
+        return conversion(myArray, magicSquare);
     }
 
-    public static void see(int[][] myArr) {
-        for (int i = 0; i < myArr.length; i++) {
-            for (int j = 0; j < myArr[i].length; j++) {
-                System.out.print(myArr[i][j]);
-            }
-            System.out.println();
-        }
-        System.out.println("--------");
+    public static int[][] conversion(MagicSquare magicSquare) {
+        return new int[][]{
+               {
+                       magicSquare.getZeroZero(),
+                       magicSquare.getZeroOne(),
+                       magicSquare.getZeroTwo()
+               },
+               {
+                       magicSquare.getOneZero(),
+                       magicSquare.getOneOne(),
+                       magicSquare.getOneTwo()
+               },
+               {
+                       magicSquare.getTwoZero(),
+                       magicSquare.getTwoOne(),
+                       magicSquare.getTwoTwo()
+               }
+       };
+    }
+    public static MagicSquareResult  conversion(int[][] myArray, MagicSquare magicSquare) {
+        return new MagicSquareResult(
+                myArray[0][0],
+                myArray[0][1],
+                myArray[0][2],
+                myArray[1][0],
+                myArray[1][1],
+                myArray[1][2],
+                myArray[2][0],
+                myArray[2][1],
+                myArray[2][2],
+                magicSquare
+        );
     }
 
     public static boolean checkSquare(int[][] arr) {

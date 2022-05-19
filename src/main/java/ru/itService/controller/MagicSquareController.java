@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 import ru.itService.model.MagicSquare;
+import ru.itService.service.MagicSquareResultService;
 import ru.itService.service.MagicSquareService;
 
 import java.util.List;
@@ -16,9 +17,12 @@ import java.util.List;
 public class MagicSquareController {
 
     private final MagicSquareService magicSquareService;
+    private final MagicSquareResultService magicSquareResultService;
 
-    public MagicSquareController(MagicSquareService magicSquareService) {
+    public MagicSquareController(MagicSquareService magicSquareService,
+                                 MagicSquareResultService magicSquareResultService) {
         this.magicSquareService = magicSquareService;
+        this.magicSquareResultService = magicSquareResultService;
     }
 
     @GetMapping("/magicCalculation")
@@ -34,12 +38,13 @@ public class MagicSquareController {
             return "redirect:/magicCalculation?validate=false";
         }
         magicSquareService.create(magicSquare);
+        magicSquareResultService.create(magicSquare);
         return "redirect:/magicCalculation";
     }
 
     @GetMapping("/findMagicSquare")
     public String findMagicSquare(Model model) {
-        model.addAttribute("magicSquares", magicSquareService.findAll());
+        model.addAttribute("magicSquares", magicSquareResultService.findAll());
         return "findMagicSquare";
     }
 
@@ -57,6 +62,7 @@ public class MagicSquareController {
     public String importMagicSquareFromTxt(@RequestParam("file") MultipartFile file) {
         List<MagicSquare> list = magicSquareService.importFromTxt(file);
         magicSquareService.createAll(list);
+        magicSquareResultService.createAll(list);
         return "redirect:/magicCalculation";
     }
 }

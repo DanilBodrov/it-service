@@ -61,7 +61,6 @@ public class MagicSquareService {
         }
     }
 
-    /*TODO обработка при отправки пустоты*/
     public List<MagicSquare> importFromTxt(MultipartFile file) {
         File condFile = new File(file.getOriginalFilename());
         List<MagicSquare> list = new ArrayList<>();
