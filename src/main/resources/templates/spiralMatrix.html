@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="utf-8">
+    <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
@@ -15,16 +15,17 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
             integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
             crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
     <title>it-Service</title>
+
 </head>
 
 <style type="text/css">
     table {
         border-collapse: collapse;
-        width: 464px;
-        height: 250px;
+        width: 500px;
+        height: 500px;
+        margin: auto;
     }
 
     table th,
@@ -35,6 +36,7 @@
     table.brd th,
     table.brd td {
         border: 1px solid #000;
+
     }
 
     table.brd tr {
@@ -64,53 +66,39 @@
         </ul>
     </div>
 
-    <div class="row" style="width: 580px">
-        <div class="card" style="width:80%;">
-            <div class="card-header">
-                Не магический квадрат(до) # Магический квадрат(после)
-            </div>
+    <div class="card" style="margin: auto">
+        <div class="card-body">
+            <form th:action="@{/calculationSpiralMatrix}" method="get">
+                <div class="form-group">
+                    <label for="number">Спиральный массив!</label>
+                    <input type="number" min="2" max="50" class="form-control" name="number" id="number">
+                </div>
+                <button type="submit" formaction="calculationSpiralMatrix" class="btn btn-primary">Рассчитать</button>
+            </form>
         </div>
-        <table class="brd" th:each="square: ${magicSquares}" border="5">
-            <caption></caption>
-            <thead>
-            <tr>
-                <th scope="col"></th>
-                <th scope="col"></th>
-                <th scope="col"></th>
-                <th width="20px" scope="col"></th>
-                <th scope="col"></th>
-                <th scope="col"></th>
-                <th scope="col"></th>
+    </div>
+
+    <div class="row" style="margin: auto; font-size: 24px">
+        <table style="width: auto; height: auto">
+            <tbody>
+            <tr th:each="row: ${matrix.getLength()}">
+                <td>Вывод массива</td>
+                <td title="dsd" th:text="${row}"></td>
+                <td> на</td>
+                <td title="dsd" th:text="${row}"></td>
             </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div class="row">
+        <table class="brd">
+            <thead>
+            <tr></tr>
             </thead>
             <tbody>
-            <tr>
-                <td th:text="${square.getMagicSquareId().getZeroZero}"></td>
-                <td th:text="${square.getMagicSquareId().zeroOne}"></td>
-                <td th:text="${square.getMagicSquareId().zeroTwo}"></td>
-                <td></td>
-                <td th:text="${square.zeroZero}"></td>
-                <td th:text="${square.zeroOne}"></td>
-                <td th:text="${square.zeroTwo}"></td>
-            </tr>
-            <tr>
-                <td th:text="${square.getMagicSquareId().oneZero}"></td>
-                <td th:text="${square.getMagicSquareId().oneOne}"></td>
-                <td th:text="${square.getMagicSquareId().oneTwo}"></td>
-                <td></td>
-                <td th:text="${square.oneZero}"></td>
-                <td th:text="${square.oneOne}"></td>
-                <td th:text="${square.oneTwo}"></td>
-
-            </tr>
-            <tr>
-                <td th:text="${square.getMagicSquareId().twoZero}"></td>
-                <td th:text="${square.getMagicSquareId().twoOne}"></td>
-                <td th:text="${square.getMagicSquareId().twoTwo}"></td>
-                <td></td>
-                <td th:text="${square.twoZero}"></td>
-                <td th:text="${square.twoOne}"></td>
-                <td th:text="${square.twoTwo}"></td>
+            <tr th:each="row: ${matrix.getMatrix()}">
+                <td th:each="value: ${row}" th:text="${value}"></td>
             </tr>
             </tbody>
         </table>
